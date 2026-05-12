@@ -1,30 +1,46 @@
-name: Build Flutter APK
+name: Flutter APK Debug Build
 
 on:
   push:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-apk:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.22.2'
-          channel: 'stable'
+          channel: stable
 
-      - run: flutter pub get
+      - name: Flutter Doctor
+        run: flutter doctor -v
 
-      - run: flutter build apk --release
+      - name: Check Java Version
+        run: java -version
 
-      - uses: actions/upload-artifact@v4
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Analyze Project
+        run: flutter analyze
+        continue-on-error: true
+
+      - name: Build APK with Full Logs
+        run: flutter build apk --release --verbose
+
+      - name: Upload APK
+        if: success()
+        uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
