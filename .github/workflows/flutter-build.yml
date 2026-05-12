@@ -5,34 +5,39 @@ on:
     branches:
       - main
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build-apk:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.2'
+          flutter-version: '3.16.9'
           channel: stable
 
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      - name: Install Dependencies
+      - name: Get Packages
         run: flutter pub get
 
+      - name: Clean Project
+        run: flutter clean
+
       - name: Build APK
-        run: flutter build apk --release --verbose
+        run: flutter build apk --release
 
       - name: Upload APK
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
