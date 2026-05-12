@@ -1,4 +1,4 @@
-name: Flutter APK Debug Build
+name: Flutter APK Build
 
 on:
   push:
@@ -25,17 +25,10 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      - name: Check Java Version
-        run: java -version
-
-      - name: Get Dependencies
+      - name: Install Dependencies
         run: flutter pub get
 
-      - name: Analyze Project
-        run: flutter analyze
-        continue-on-error: true
-
-      - name: Build APK with Full Logs
+      - name: Build APK
         run: flutter build apk --release --verbose
 
       - name: Upload APK
