@@ -350,7 +350,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20),
               child: DropdownButtonFormField<String>(
-                value: selectedStop,
+                initialValue: selectedStop,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,

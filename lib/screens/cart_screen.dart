@@ -8,7 +8,7 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  List<Map<String, dynamic>> _cartItems = [
+  final List<Map<String, dynamic>> _cartItems = [
     {
       'id': '1',
       'name': 'Chicken Biryani',
@@ -175,7 +175,7 @@ class _CartScreenState extends State<CartScreen> {
                                         },
                                         color: const Color(0xFF2D6A4F),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         width: 40,
                                         child: Text(
                                           item['quantity'].toString(),

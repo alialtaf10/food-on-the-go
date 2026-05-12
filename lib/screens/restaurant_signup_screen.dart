@@ -237,7 +237,7 @@ class _RestaurantSignupScreenState extends State<RestaurantSignupScreen> {
             labelText: 'Stop Location',
             prefixIcon: Icon(Icons.location_on),
           ),
-          value: _selectedStop,
+          initialValue: _selectedStop,
           items: _stopLocations.map((String location) {
             return DropdownMenuItem<String>(
               value: location,

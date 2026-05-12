@@ -51,12 +51,12 @@ class RoleSelectionScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: const Color(0xFF2D6A4F).withOpacity(0.3), width: 2),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.directions_car, size: 32, color: Color(0xFF2D6A4F)),
-                      const SizedBox(width: 16),
-                      const Text(
+                      Icon(Icons.directions_car, size: 32, color: Color(0xFF2D6A4F)),
+                      SizedBox(width: 16),
+                      Text(
                         'Driver / Customer',
                         style: TextStyle(
                           fontSize: 20,
@@ -91,12 +91,12 @@ class RoleSelectionScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: const Color(0xFF52B788).withOpacity(0.3), width: 2),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.restaurant, size: 32, color: Color(0xFF52B788)),
-                      const SizedBox(width: 16),
-                      const Text(
+                      Icon(Icons.restaurant, size: 32, color: Color(0xFF52B788)),
+                      SizedBox(width: 16),
+                      Text(
                         'Restaurant / Stop',
                         style: TextStyle(
                           fontSize: 20,
